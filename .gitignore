@@ -1,0 +1,6 @@
+.output/
+.vscode/
+.wxt/
+.env
+.env.publish
+node_modules/
