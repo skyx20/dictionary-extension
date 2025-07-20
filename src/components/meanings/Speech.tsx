@@ -25,7 +25,7 @@ function IPA({ contry, ipa, src }: ipaTypes) {
         </p>
         <p className="font-gentium-plus text-base">{ipa}</p>
       </div>
-      <ButtonPlay src={src} />
+      {src && <ButtonPlay src={src} />}
     </div>
   );
 }

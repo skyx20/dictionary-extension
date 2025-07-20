@@ -1,9 +1,7 @@
 import WordHeader from "@/components/meanings/WordHeader";
 import Speech from "@/components/meanings/Speech";
 import Accordion from "@/components/meanings/accordion";
-import { useEffect } from "react";
 import { useLocation } from "react-router";
-import { useParams } from "react-router";
 import { type WordData } from "./types";
 
 const data: WordData = {
@@ -166,7 +164,6 @@ const data: WordData = {
 };
 
 function Meaning() {
-  const params = useParams();
   const location = useLocation();
   const wordData = location.state?.wordData;
 
