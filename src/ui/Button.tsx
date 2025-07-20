@@ -13,19 +13,20 @@ function Button({ children, isDisable, onClick }: Props) {
       onClick={onClick}
       className="
       relative
-      bg-main rounded-full 
+      bg-headerBlue rounded-full 
       text-sm text-font duration-200 
       transition ease-in-out
-      focus:ring-1 focus:ring-offset-2 focus:ring-main
-      hover:ring-1 hover:ring-secondary hover:ring-offset-2
+      focus:ring-1 focus:ring-offset-2 focus:ring-btnHv
+      hover:ring-1 hover:ring-btnHv hover:ring-offset-2
       font-semibold 
       cursor-pointer
-      
-      px-8 py-3"
+      px-4 py-2"
     >
-      {isDisable ? <Loader/> : 
-      <p className={isDisable ? "opacity-0" : "opacity-100"}>{children}</p>
-      }
+      {isDisable ? (
+        <Loader />
+      ) : (
+        <p className={isDisable ? "opacity-0" : "opacity-100"}>{children}</p>
+      )}
     </button>
   );
 }

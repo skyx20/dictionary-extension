@@ -1,12 +1,8 @@
 function Footer() {
-  let currentYear = new Date().getFullYear();
+  // let currentYear = new Date().getFullYear();
 
   return (
-    <div className="font-serif italic items-center flex justify-between h-8 p-1.5 bg-secondary">
-      <p className="flex gap-1">
-        All rights reserved
-        <p className="italic">@{currentYear}</p>
-      </p>
+    <div className="font-serif italic items-center flex justify-end h-8 p-1.5 bg-secondary">
       <p>
         Made with
         <span className="not-italic">❤️</span>
