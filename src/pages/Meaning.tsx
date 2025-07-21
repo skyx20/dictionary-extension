@@ -164,6 +164,7 @@ const data: WordData = {
 };
 
 function Meaning() {
+  "This component use a state object to get the data from the search page";
   const location = useLocation();
   const wordData = location.state?.wordData;
 
@@ -180,7 +181,7 @@ function Meaning() {
             ipas={wordData["ipas"]}
           />
           <div className="w-full my-2 text-center border-t-2 border-greyEx rounded"></div>
-          <p>Definitions:</p>
+          <p className="text-xl font-bold">Definitions:</p>
           <Accordion data={wordData["meanings"]} />
         </>
       )}
