@@ -13,7 +13,6 @@ function Input({
   value: string;
   onChange: Function;
 }) {
-  
   return (
     <div className="relative">
       <input
@@ -29,9 +28,6 @@ function Input({
         }
         className={` 
         placeholder:italic 
-        placeholder:
-        focus-within:text-gray-700
-        focus:outline-1
         font-semibold
         border-1 rounded-xl
         text-sm

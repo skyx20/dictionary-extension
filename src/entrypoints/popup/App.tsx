@@ -5,6 +5,11 @@ import Meaning from "../../pages/Meaning";
 import { HashRouter as Router, Routes, Route } from "react-router";
 import { PageContext, PageProvider } from "@/hooks/PageContext";
 
+//  TODO: fix the button animation loading of search
+//  TODO: fix the "not feedback given" when the server is not available
+//  TODO: create a setting page, for what? idk yet
+//  TODO: Add a select component to provide the type of dict
+
 function App() {
   return (
     <>

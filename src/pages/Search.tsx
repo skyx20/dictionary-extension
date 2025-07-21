@@ -16,23 +16,34 @@ function Search() {
   }
 
   async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
-    setIsLoading(true);
     e.preventDefault();
+    if (!inputString) {
+      setError("Insert a word");
+      return;
+    }
+    setIsLoading(true);
     try {
       const r = await fetch(
         `http://127.0.0.1:8000/search/${inputString}/${lang}`
       );
+
       if (!r.ok) {
+        console.log("this is error", r);
         const errorMessage = await r.json();
         setError(errorMessage.detail);
+        throw new Error(r.statusText);
       }
+
       const data = await r.json();
+
       navigation(`/meanings/${inputString}/${lang}`, {
         state: { wordData: data },
       });
     } catch (e) {
-    } finally {
+      console.error(e);
       setIsLoading(false);
+      // Optionally handle the error UI
+      // setError('An unexpected error occurred.');
     }
   }
 
@@ -55,7 +66,7 @@ function Search() {
             value={inputString}
             onChange={setInputString}
           />
-          <div className="pt-4 relative">
+          <div className="mx-auto pt-2 flex justify-center">
             <Button onClick={handleSubmit} isDisable={isLoading}>
               Search
             </Button>
