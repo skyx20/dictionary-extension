@@ -1,15 +1,17 @@
 # Dictionary extension
 
-## A extension for chromium to search english words meanings in cambridge Dictionary
+## A extension for chromium and firefox to search english words meanings in Cambridge dictionary
 
-A lightweight dictionary Chrome extension built with React and TypeScript. It allows you to search for English words and get detailed definitions, phonetic, and pronunciation audios using a clean and accessible UI. The extension integrates with a custom FastAPI backend to fetch dictionary data dynamically.See it here [Dictionary Api](https://github.com/skyx20/cambridge_api).
+A lightweight dictionary extension built with React and TypeScript. It allows you to search for English words and get detailed definitions, phonetic, and pronunciation audios using a clean and accessible UI. The extension integrates with a custom FastAPI backend to fetch dictionary data dynamically.See it here [Dictionary Api](https://github.com/skyx20/cambridge_api).
 This program uses WXT next-gen framework for quick development of browser extensions. Ideal for language learners, students, and anyone who wants quick access to word meanings without leaving their current tab.
 
 ### How to install
 
-- clone the repo: `git clone https://github.com/skyx20/dictionary-extension.git`
+- Clone the repo: `git clone https://github.com/skyx20/dictionary-extension.git`
 - Open the folder in the terminal and install all dependencies: `npm i`
-- Go to `web-ext.config.ts` and place the location for your web driver. Follows the wxt docs here [WXT Browser Startup ](https://wxt.dev/guide/essentials/config/browser-startup.html)
+- If you have the target browser installed, WXT will find the path to it, just choose the one in the `web-ext.config.ts` folder. For more information see the [Built-in Enviroment Variables]("https://wxt.dev/guide/essentials/config/environment-variables.html#built-in-environment-variables")
+- if You want to set it mannually, create the enviroment variable in the .env and use it in `web-ext.config.ts`. For more information, see :[WXT Browser Startup ](https://wxt.dev/guide/essentials/config/browser-startup.html)
+  _It's recommended to use a testing driver for better performance_
 
 ### How to run
 
@@ -20,8 +22,8 @@ This program uses WXT next-gen framework for quick development of browser extens
 If you want to add it to your browser, follow the steps:
 
 - `npm run build`
-- go to "manage extensions" in your browser
-- activate "developer mode"
-- click on "load Unpacked"
+- Go to "manage extensions" in your browser
+- Activate "developer mode"
+- Click on "load Unpacked"
 - Search the path to '.output/chrome-mv3' (if you're using chrome) in the main folder.
 - That's it. 😊
