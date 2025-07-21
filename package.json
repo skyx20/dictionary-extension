@@ -1,8 +1,8 @@
 {
-  "name": "meanings-alpha",
-  "description": "The bridge beetween your seek of meaning of english words and cambridge Dictionary",
+  "name": "meanings",
+  "description": "The bridge beetween english words and Cambridge dictionary",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "scripts": {
     "dev": "wxt",
