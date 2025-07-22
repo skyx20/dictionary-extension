@@ -2,7 +2,9 @@
 
 ## An extension for chromium and firefox to search english words meanings in Cambridge dictionary
 
-<img style="display: block; margin: 0 auto" src="src/assets/meanings_demo.gif" width="300" height="300" />
+<p align="center">
+  <img  src="src/assets/meanings_demo.gif" width="400" height="400" />
+</p>
 
 <br>
 Meanings is a lightweight dictionary extension built with React and TypeScript. It allows you to search for English words and get detailed definitions, phonetic, and pronunciation audios using a clean and accessible UI. The extension integrates with a custom FastAPI backend to fetch dictionary data dynamically.See it here [Dictionary Api](https://github.com/skyx20/cambridge_api).
