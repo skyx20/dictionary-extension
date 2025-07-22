@@ -1,4 +1,4 @@
-# Dictionary extension
+# Meanings
 
 ## An extension for chromium and firefox to search english words meanings in Cambridge dictionary
 
