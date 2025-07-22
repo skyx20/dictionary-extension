@@ -2,7 +2,10 @@
 
 ## An extension for chromium and firefox to search english words meanings in Cambridge dictionary
 
-A lightweight dictionary extension built with React and TypeScript. It allows you to search for English words and get detailed definitions, phonetic, and pronunciation audios using a clean and accessible UI. The extension integrates with a custom FastAPI backend to fetch dictionary data dynamically.See it here [Dictionary Api](https://github.com/skyx20/cambridge_api).
+<img style="display: block; margin: 0 auto" src="src/assets/meanings_demo.gif" width="300" height="300" />
+
+<br>
+Meanings is a lightweight dictionary extension built with React and TypeScript. It allows you to search for English words and get detailed definitions, phonetic, and pronunciation audios using a clean and accessible UI. The extension integrates with a custom FastAPI backend to fetch dictionary data dynamically.See it here [Dictionary Api](https://github.com/skyx20/cambridge_api).
 This program uses WXT next-gen framework for quick development of browser extensions. Ideal for language learners, students, and anyone who wants quick access to word meanings without leaving their current tab.
 
 ### How to install
@@ -19,7 +22,7 @@ This program uses WXT next-gen framework for quick development of browser extens
 
 ### How to build:
 
-If you want to add it to your browser, follow the steps:
+Add it to your browser, follow the steps:
 
 - `npm run build`
 - Go to "manage extensions" in your browser

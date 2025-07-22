@@ -1,7 +1,12 @@
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { type GuideWordDefMeaning } from "../../pages/types";
 
-function ExampleItem({ example }) {
+type MeaningsProps = {
+  meanings: GuideWordDefMeaning[];
+};
+
+function ExampleItem({ example }: { example: string | null }) {
   return (
     <div className="bg-white italic border-l-3 border-greyEx rounded-sm p-1">
       "{example}"
@@ -12,19 +17,24 @@ function ExampleItem({ example }) {
 function ExampleSection({ examples }) {
   return (
     <div className="flex pt-2 flex-col gap-1 ">
-      <p className="font-bold text-">EXAMPLES</p>
-      {examples.map((eg) => (
-        <ExampleItem example={eg} />
+      <p className="font-bold text-">
+        {examples?.length > 1 ? "EXAMPLES" : "EXAMPLE"}
+      </p>
+      {examples.map((eg, index) => (
+        <ExampleItem key={index} example={eg} />
       ))}
     </div>
   );
 }
 
-function Meaning({ definitions }) {
+function Meaning({ meanings }: MeaningsProps) {
   return (
     <>
-      {definitions.map((def) => (
-        <div className="mt-2 bg-greyBg border-1 border-greyEx p-2 rounded">
+      {meanings.map((def, index) => (
+        <div
+          key={index}
+          className="mt-2 bg-greyBg border-1 border-greyEx p-2 rounded"
+        >
           <div className="flex gap-2">
             {def["cerfLevel"] ? (
               <span
@@ -36,7 +46,9 @@ function Meaning({ definitions }) {
             ) : (
               <span></span>
             )}
-            <p className="text-sm">{def["definition"]}</p>
+            <p className="text-sm">
+              {def["definition"][0].toUpperCase() + def["definition"].slice(1)}
+            </p>
           </div>
           <ExampleSection examples={def["examples"]} />
         </div>
@@ -51,12 +63,12 @@ function AccordionContent({ content }) {
       {content["guideWord"] && (
         <div className="flex gap-2 justify-items-center items-center">
           <span className="h-2 w-2 bg-greenBg rounded-full"></span>
-          <h1 id="guide-word" title="guide-word" className="text font-bold">
+          <h1 id="guide-word" title="guide-word" className="font-bold">
             {content["guideWord"]}
           </h1>
         </div>
       )}
-      <Meaning definitions={content["meanings"]} />
+      <Meaning meanings={content["meanings"]} />
     </div>
   );
 }
@@ -97,8 +109,11 @@ function AccordionItem({ title, isOpened, onToggle, content }) {
           isOpened ? "opacity-100" : "opacity-0"
         }`}
       >
-        {content.map((meaningBlock) => (
-          <AccordionContent content={meaningBlock}></AccordionContent>
+        {content.map((meaningBlock, index) => (
+          <AccordionContent
+            key={index}
+            content={meaningBlock}
+          ></AccordionContent>
         ))}
       </div>
     </div>

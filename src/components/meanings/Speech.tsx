@@ -23,7 +23,9 @@ function IPA({ contry, ipa, src }: ipaTypes) {
         >
           {contry}
         </p>
-        <p className="font-gentium-plus text-base">{ipa}</p>
+        <p title="ipa" className="font-gentium-plus text-base">
+          {ipa}
+        </p>
       </div>
       {src && <ButtonPlay src={src} />}
     </div>
@@ -39,11 +41,12 @@ function Speech({
 }) {
   return (
     <>
-      <p className="text-sm">Pronunciation</p>
+      <p className="text-sm">Pronunciation:</p>
       <div className="pt-2 flex gap-2 flex-col">
-        {(Object.keys(audio_links) as Country[]).map((country) => (
+        {(Object.keys(audio_links) as Country[]).map((country, index) => (
           <>
             <IPA
+              key={index}
               contry={country}
               ipa={ipas[country]}
               src={audio_links[country]}

@@ -181,7 +181,7 @@ function Meaning() {
             ipas={wordData["ipas"]}
           />
           <div className="w-full my-2 text-center border-t-2 border-greyEx rounded"></div>
-          <p className="text-xl font-bold">Definitions:</p>
+          <p className="text-sm">Definitions:</p>
           <Accordion data={wordData["meanings"]} />
         </>
       )}
