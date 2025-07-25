@@ -11,7 +11,10 @@ type ipaTypes = {
 
 function IPA({ contry, ipa, src }: ipaTypes) {
   return (
-    <div className="flex rounded justify-between bg-greyBg py-2 px-2">
+    <div
+      key={contry}
+      className="flex rounded justify-between bg-greyBg py-2 px-2"
+    >
       <div className="grid grid-cols-2 place-items-center gap-3">
         <p
           className={`${

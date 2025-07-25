@@ -11,9 +11,13 @@ function Search() {
   const [error, setError] = useState("");
   const navigation = useNavigate();
 
-  function handleClose() {
+  function handleClose(): void {
     setError("");
   }
+  function handleLang(e: React.ChangeEvent<HTMLSelectElement>) {
+    setLang(e.target.value);
+  }
+  console.log(lang);
 
   async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
@@ -22,11 +26,9 @@ function Search() {
       return;
     }
     setIsLoading(true);
+    const fQuery = inputString.toLowerCase().trim();
     try {
-      const r = await fetch(
-        `http://127.0.0.1:8000/search/${inputString}/${lang}`
-      );
-
+      const r = await fetch(`http://127.0.0.1:8000/search/${fQuery}/${lang}`);
       if (!r.ok) {
         console.log("this is error", r);
         const errorMessage = await r.json();
@@ -71,19 +73,20 @@ function Search() {
               Search
             </Button>
           </div>
-          {/* <div className="border-1 border-greyEx rounded mt-2">
+          {
+            <div className="border-1 w-fit mx-auto border-greyEx rounded mt-2">
               <select
-              // onChange={setLang(value)}
+                onChange={(e) => handleLang(e)}
                 defaultChecked
-                className="mx-auto"
+                className="mx-auto focus:outline-none"
                 name="langs"
-                >
-                <option>dict Variant</option>
+              >
                 <option value="uk">Unided Kindom</option>
                 <option value="us">United Stated</option>
                 <option value="be">Bussines</option>
-                </select>
-                </div> */}
+              </select>
+            </div>
+          }
         </form>
       </div>
       {error && (
