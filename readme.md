@@ -1,4 +1,4 @@
-# Dictionary extension
+# Meanings
 
 ## An extension for chromium and firefox to search english words meanings in Cambridge dictionary
 
@@ -13,7 +13,7 @@ This program uses WXT next-gen framework for quick development of browser extens
 
 - Clone the repo: `git clone https://github.com/skyx20/dictionary-extension.git`
 - Open the folder in the terminal and install all dependencies: `npm i`
-- If you have the target browser installed, WXT will find the path to it, just choose the one in the `web-ext.config.ts` folder. For more information see the [Built-in Enviroment Variables]("https://wxt.dev/guide/essentials/config/environment-variables.html#built-in-environment-variables")
+- If you have the target browser installed, WXT will find the path to it, just choose the one in the `web-ext.config.ts` folder. For more information see the [Built-in Enviroment Variables](https://wxt.dev/guide/essentials/config/environment-variables.html#built-in-environment-variables)
 - if You want to set it mannually, create the enviroment variable in the .env and use it in `web-ext.config.ts`. For more information, see :[WXT Browser Startup ](https://wxt.dev/guide/essentials/config/browser-startup.html)
   _It's recommended to use a testing driver for better performance_
 
