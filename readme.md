@@ -6,7 +6,8 @@
   <img  src="src/assets/meanings_demo.gif" width="400" height="400" />
 </p>
 
-Meanings is a lightweight dictionary extension built with React and TypeScript. It allows you to search for English words and get detailed definitions, phonetic, and pronunciation audios using a clean and accessible UI. The extension integrates with a custom FastAPI backend to fetch dictionary data dynamically. See it here [Dictionary Api]("https://github.com/skyx20/cambridge_api").
+Meanings is a lightweight dictionary extension built with React and TypeScript. It allows you to search for English words and get detailed definitions, phonetic, and pronunciation audios using a clean and accessible UI. The extension integrates with a custom FastAPI backend to fetch dictionary data dynamically. See it here [Dictionary Api](https://github.com/skyx20/cambridge_api).
+
 This program uses WXT next-gen framework for quick development of browser extensions. Ideal for language learners, students, and anyone who wants quick access to word meanings without leaving their current tab.
 
 ### How to install
