@@ -17,7 +17,7 @@ function Header() {
   }
 
   return (
-    <div className="flex p-3 gap-2 items-center bg-headerBlue h-12">
+    <header className="flex p-3 gap-2 items-center bg-headerBlue h-12">
       {/* <div className="flex gap-2 items center h-6"> */}
       <span className="">
         <LuBookText className=" text-white h-5 w-5 "></LuBookText>
@@ -44,7 +44,7 @@ function Header() {
           <IoSettingsOutline className="text-white h-5 w-5" />
         </button>
       </div>
-    </div>
+    </header>
   );
 }
 

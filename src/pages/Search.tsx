@@ -3,6 +3,7 @@ import Button from "../ui/Button";
 import { useNavigate } from "react-router";
 import { sendMessage } from "webext-bridge/background";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { CiCircleInfo } from "react-icons/ci";
 
 function Search() {
   const [isLoading, setIsLoading] = useState(false);
@@ -35,17 +36,13 @@ function Search() {
         setError(errorMessage.detail);
         throw new Error(r.statusText);
       }
-
       const data = await r.json();
-
       navigation(`/meanings/${inputString}/${lang}`, {
         state: { wordData: data },
       });
     } catch (e) {
       console.error(e);
       setIsLoading(false);
-      // Optionally handle the error UI
-      // setError('An unexpected error occurred.');
     }
   }
 
@@ -74,17 +71,30 @@ function Search() {
             </Button>
           </div>
           {
-            <div className="border-1 w-fit mx-auto border-greyEx rounded mt-2">
-              <select
-                onChange={(e) => handleLang(e)}
-                defaultChecked
-                className="mx-auto focus:outline-none"
-                name="langs"
-              >
-                <option value="uk">Unided Kindom</option>
-                <option value="us">United Stated</option>
-                <option value="be">Bussines</option>
-              </select>
+            <div className="flex gap-2 justify-center mt-2">
+              <div className="relative w-fit">
+                <select
+                  onChange={(e) => handleLang(e)}
+                  defaultChecked
+                  className="
+                    focus:outline-none
+                    border-1 w-fit p-1 border-greyEx rounded
+                "
+                  name="langs"
+                >
+                  <option value="uk">Unided Kindom</option>
+                  <option value="us">United Stated</option>
+                  <option value="be">Bussines</option>
+                </select>
+                <div className="absolute hover:cursor-help -right-5 top-0">
+                  <div>
+                    <CiCircleInfo className="h-4 w-4" />
+                    <span className="opacity-0">
+                      Select a dictionary variant
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           }
         </form>
