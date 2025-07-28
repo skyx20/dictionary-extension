@@ -8,13 +8,13 @@ function WordHeader({ word, word_origin }: wordHeaderTypes) {
     <div className="flex flex-col gap-1.5">
       <h1 className="text-xl font-bold">{word}</h1>
       <div className="flex ">
-        <p
+        <strong
           title="origin"
           className="rounded-3xl  text-white bg-greenBg py-0.5 px-2"
           id="w-origin"
         >
           {word_origin}
-        </p>
+        </strong>
       </div>
     </div>
   );

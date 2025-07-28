@@ -171,7 +171,7 @@ function Meaning() {
   return (
     <div className="p-2 flex flex-col gap-2">
       {wordData && (
-        <>
+        <article>
           <WordHeader
             word={wordData["word"]}
             word_origin={wordData["origin"]}
@@ -183,7 +183,7 @@ function Meaning() {
           <div className="w-full my-2 text-center border-t-2 border-greyEx rounded"></div>
           <p className="text-sm">Definitions:</p>
           <Accordion data={wordData["meanings"]} />
-        </>
+        </article>
       )}
     </div>
   );

@@ -4,21 +4,40 @@ import { useNavigate } from "react-router";
 import { sendMessage } from "webext-bridge/background";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { CiCircleInfo } from "react-icons/ci";
+import { FaRegQuestionCircle } from "react-icons/fa";
 
 function Search() {
+  type dictTypes = {
+    uk: string;
+    us: string;
+    be: string;
+    [key: string]: string;
+  };
+  const dictVariants: dictTypes = {
+    uk: "United Kingdom",
+    us: "United States",
+    be: "Business",
+  };
+  const [helpVariant, setHelpVariant] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [inputString, setInputString] = useState("");
-  const [lang, setLang] = useState("uk");
+  const [variant, setVariant] = useState("");
   const [error, setError] = useState("");
   const navigation = useNavigate();
 
-  function handleClose(): void {
+  useEffect(() => {
+    const dictPref = localStorage.getItem("userDictPref");
+    if (dictPref) setVariant(dictPref);
+  }, []);
+
+  function handleMsgClose(): void {
     setError("");
   }
-  function handleLang(e: React.ChangeEvent<HTMLSelectElement>) {
-    setLang(e.target.value);
+  function handleVariant(e: React.ChangeEvent<HTMLSelectElement>) {
+    const value = e.target.value;
+    setVariant(value);
+    localStorage.setItem("userDictPref", value);
   }
-  console.log(lang);
 
   async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
@@ -26,10 +45,17 @@ function Search() {
       setError("Insert a word");
       return;
     }
+    if (!variant) {
+      setError("select a dictionary variant first");
+      return;
+    }
+
     setIsLoading(true);
     const fQuery = inputString.toLowerCase().trim();
     try {
-      const r = await fetch(`http://127.0.0.1:8000/search/${fQuery}/${lang}`);
+      const r = await fetch(
+        `http://127.0.0.1:8000/search/${fQuery}/${variant}`
+      );
       if (!r.ok) {
         console.log("this is error", r);
         const errorMessage = await r.json();
@@ -37,7 +63,7 @@ function Search() {
         throw new Error(r.statusText);
       }
       const data = await r.json();
-      navigation(`/meanings/${inputString}/${lang}`, {
+      navigation(`/meanings/${inputString}/${variant}`, {
         state: { wordData: data },
       });
     } catch (e) {
@@ -71,30 +97,45 @@ function Search() {
             </Button>
           </div>
           {
-            <div className="flex gap-2 justify-center mt-2">
-              <div className="relative w-fit">
-                <select
-                  onChange={(e) => handleLang(e)}
-                  defaultChecked
-                  className="
-                    focus:outline-none
-                    border-1 w-fit p-1 border-greyEx rounded
+            <div className="relative flex justify-center flex-col items-center mt-2 mx-auto">
+              <select
+                onChange={(e) => handleVariant(e)}
+                className="
+                focus:outline-none
+                border-1 w-fit p-1 border-slate-400 rounded
                 "
-                  name="langs"
-                >
-                  <option value="uk">Unided Kindom</option>
-                  <option value="us">United Stated</option>
-                  <option value="be">Bussines</option>
-                </select>
-                <div className="absolute hover:cursor-help -right-5 top-0">
-                  <div>
-                    <CiCircleInfo className="h-4 w-4" />
-                    <span className="opacity-0">
-                      Select a dictionary variant
-                    </span>
-                  </div>
-                </div>
+                name="variants"
+              >
+                {Object.keys(dictVariants).map((country) => (
+                  <option
+                    key={country}
+                    selected={variant === country ? true : undefined}
+                    value={country}
+                  >
+                    {dictVariants[country]}
+                  </option>
+                ))}
+              </select>
+              <div
+                className="absolute top-0 right-8 hover:cursor-pointer"
+                onMouseEnter={() => setHelpVariant(true)}
+                onMouseLeave={() => setHelpVariant(false)}
+              >
+                <FaRegQuestionCircle className="h-4 w-4" />
               </div>
+              <span
+                className={`absolute border-1 border-slate-400 
+                  rounded pl-1 w-15 pointer-events-none text-left text-slate-600 leading-3.5
+                  top-0 -right-9 font-gentium-plus transition-all duration-300
+                            ${
+                              helpVariant
+                                ? "opacity-100 translate-x-0 pointer-events-auto"
+                                : "opacity-0 -translate-x-2 "
+                            }
+                          `}
+              >
+                select a dictionary variant
+              </span>
             </div>
           }
         </form>
@@ -107,7 +148,7 @@ function Search() {
           p-2 bg-red-200"
           >
             <div className="italic text-xs text-red-600">{error}</div>
-            <button className="hover:cursor-pointer" onClick={handleClose}>
+            <button className="hover:cursor-pointer" onClick={handleMsgClose}>
               <IoIosCloseCircleOutline className="h-5 w-5" />
             </button>
           </div>

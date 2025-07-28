@@ -28,6 +28,7 @@ function ExampleSection({ examples }) {
 }
 
 function Meaning({ meanings }: MeaningsProps) {
+  console.log(meanings);
   return (
     <>
       {meanings.map((def, index) => (
@@ -36,21 +37,21 @@ function Meaning({ meanings }: MeaningsProps) {
           className="mt-2 bg-greyBg border-1 border-greyEx p-2 rounded"
         >
           <div className="flex gap-2">
-            {def["cerfLevel"] ? (
+            {def["cerfLevel"] && (
               <span
                 title="cerf-level"
                 className="bg-greenBg text-white rounded-2xl h-fit px-2"
               >
                 {def["cerfLevel"]}
               </span>
-            ) : (
-              <span></span>
             )}
             <p className="text-sm">
               {def["definition"][0].toUpperCase() + def["definition"].slice(1)}
             </p>
           </div>
-          <ExampleSection examples={def["examples"]} />
+          {def["examples"]?.length > 0 && (
+            <ExampleSection examples={def["examples"]} />
+          )}
         </div>
       ))}
     </>
@@ -105,7 +106,7 @@ function AccordionItem({ title, isOpened, onToggle, content }) {
         </div>
       </div>
       <div
-        className={` px-2 transition-all duration-200 ${
+        className={`duration-200 ${
           isOpened ? "opacity-100" : "opacity-0"
         }`}
       >
