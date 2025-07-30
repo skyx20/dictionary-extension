@@ -28,7 +28,6 @@ function ExampleSection({ examples }) {
 }
 
 function Meaning({ meanings }: MeaningsProps) {
-  console.log(meanings);
   return (
     <>
       {meanings.map((def, index) => (
