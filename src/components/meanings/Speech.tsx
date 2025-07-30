@@ -22,7 +22,7 @@ function IPA({ contry, ipa, src }: ipaTypes) {
               ? "bg-redBg text-red-600"
               : "bg-blueBg text-headerBlue"
           }
-        text-center text-red px-2 font-bold rounded-2xl text-sm`}
+        text-center text-red px-2 font-bold rounded-2xl text-base`}
         >
           {contry}
         </p>
@@ -44,7 +44,6 @@ function Speech({
 }) {
   return (
     <>
-      <p className="text-sm">Pronunciation:</p>
       <div className="pt-2 flex gap-2 flex-col">
         {(Object.keys(audio_links) as Country[]).map((country, index) => (
           <>

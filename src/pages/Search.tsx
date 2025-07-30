@@ -18,10 +18,11 @@ function Search() {
     us: "United States",
     be: "Business",
   };
+
   const [helpVariant, setHelpVariant] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [inputString, setInputString] = useState("");
-  const [variant, setVariant] = useState("");
+  const [wordToSearch, setWordToSearch] = useState("");
+  const [variant, setVariant] = useState("uk");
   const [error, setError] = useState("");
   const navigation = useNavigate();
 
@@ -41,7 +42,7 @@ function Search() {
 
   async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-    if (!inputString) {
+    if (!wordToSearch) {
       setError("Insert a word");
       return;
     }
@@ -51,7 +52,7 @@ function Search() {
     }
 
     setIsLoading(true);
-    const fQuery = inputString.toLowerCase().trim();
+    const fQuery = wordToSearch.toLowerCase().trim();
     try {
       const r = await fetch(
         `http://127.0.0.1:8000/search/${fQuery}/${variant}`
@@ -63,7 +64,7 @@ function Search() {
         throw new Error(r.statusText);
       }
       const data = await r.json();
-      navigation(`/meanings/${inputString}/${variant}`, {
+      navigation(`/meanings/${wordToSearch}/${variant}`, {
         state: { wordData: data },
       });
     } catch (e) {
@@ -88,8 +89,8 @@ function Search() {
             isDisabled={isLoading}
             name="word"
             placeholder="Insert the word"
-            value={inputString}
-            onChange={setInputString}
+            value={wordToSearch}
+            onChange={setWordToSearch}
           />
           <div className="mx-auto pt-2 flex justify-center">
             <Button onClick={handleSubmit} isDisable={isLoading}>
@@ -125,7 +126,7 @@ function Search() {
               </div>
               <span
                 className={`absolute border-1 border-slate-400 
-                  rounded pl-1 w-15 pointer-events-none text-left text-slate-600 leading-3.5
+                  rounded pl-1 w-15 pointer-events-none text-left text-slate-800 leading-3.5
                   top-0 -right-9 font-gentium-plus transition-all duration-300
                             ${
                               helpVariant

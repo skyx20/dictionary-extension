@@ -4,6 +4,7 @@ import Accordion from "@/components/meanings/accordion";
 import { useLocation } from "react-router";
 import { type WordData } from "./types";
 
+// Testing purporses
 const data: WordData = {
   word: "mind",
   ipas: {
@@ -176,12 +177,13 @@ function Meaning() {
             word={wordData["word"]}
             word_origin={wordData["origin"]}
           />
+          <p className="text-base">Pronunciation:</p>
           <Speech
             audio_links={wordData["audio_links"]}
             ipas={wordData["ipas"]}
           />
           <div className="w-full my-2 text-center border-t-2 border-greyEx rounded"></div>
-          <p className="text-sm">Definitions:</p>
+          <p className="text-base">Definitions:</p>
           <Accordion data={wordData["meanings"]} />
         </article>
       )}

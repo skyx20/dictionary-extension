@@ -8,7 +8,7 @@ type MeaningsProps = {
 
 function ExampleItem({ example }: { example: string | null }) {
   return (
-    <div className="bg-white italic border-l-3 border-greyEx rounded-sm p-1">
+    <div className="bg-white italic border-l-3 text-sm border-greyEx rounded-sm p-1">
       "{example}"
     </div>
   );
@@ -17,7 +17,7 @@ function ExampleItem({ example }: { example: string | null }) {
 function ExampleSection({ examples }) {
   return (
     <div className="flex pt-2 flex-col gap-1 ">
-      <p className="font-bold text-">
+      <p className="font-bold text-sm">
         {examples?.length > 1 ? "EXAMPLES" : "EXAMPLE"}
       </p>
       {examples.map((eg, index) => (
@@ -38,14 +38,14 @@ function Meaning({ meanings }: MeaningsProps) {
         >
           <div className="flex gap-2">
             {def["cerfLevel"] && (
-              <span
+              <em
                 title="cerf-level"
-                className="bg-greenBg text-white rounded-2xl h-fit px-2"
+                className="bg-greenBg not-italic text-white rounded-2xl h-fit px-2"
               >
                 {def["cerfLevel"]}
-              </span>
+              </em>
             )}
-            <p className="text-sm">
+            <p className="text-base">
               {def["definition"][0].toUpperCase() + def["definition"].slice(1)}
             </p>
           </div>
@@ -64,9 +64,14 @@ function AccordionContent({ content }) {
       {content["guideWord"] && (
         <div className="flex gap-2 justify-items-center items-center">
           <span className="h-2 w-2 bg-greenBg rounded-full"></span>
-          <h1 id="guide-word" title="guide-word" className="font-bold">
+          <h2
+            id="guide-word"
+            title="guide-word"
+            className="font-bold text-base"
+          >
+            {/* Guide Word */}
             {content["guideWord"]}
-          </h1>
+          </h2>
         </div>
       )}
       <Meaning meanings={content["meanings"]} />
@@ -93,8 +98,9 @@ function AccordionItem({ title, isOpened, onToggle, content }) {
         <p
           id="pos"
           title={"part-of-speech"}
-          className="text-white bg-headerBlue rounded-3xl px-2"
+          className="text-white bg-headerBlue text-sm rounded-3xl px-2.5"
         >
+          {/* Tittle */}
           {title}
         </p>
         <div
@@ -105,11 +111,7 @@ function AccordionItem({ title, isOpened, onToggle, content }) {
           <ChevronRightIcon title="chevrongIcon" />
         </div>
       </div>
-      <div
-        className={`duration-200 ${
-          isOpened ? "opacity-100" : "opacity-0"
-        }`}
-      >
+      <div className={`duration-200 ${isOpened ? "opacity-100" : "opacity-0"}`}>
         {content.map((meaningBlock, index) => (
           <AccordionContent
             key={index}

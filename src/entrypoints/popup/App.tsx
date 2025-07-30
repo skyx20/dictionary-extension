@@ -13,13 +13,11 @@ import { PageContext, PageProvider } from "@/hooks/PageContext";
 function App() {
   return (
     <>
-      {/* <PageProvider> */}
       <Router>
         <Layout>
           <Routes>
             <Route path="/" element={<Search />}></Route>
             <Route path="*" element={<Search />}></Route>
-            {/* <Route path="/search" element={<Search />}></Route> */}
             <Route
               path="/meanings/:word/:dictVariant"
               element={<Meaning />}
@@ -28,7 +26,6 @@ function App() {
         </Layout>
       </Router>
 
-      {/* </PageProvider> */}
     </>
   );
 }
