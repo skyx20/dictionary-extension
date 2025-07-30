@@ -10,6 +10,10 @@ Meanings is a lightweight dictionary extension built with React and TypeScript. 
 
 This program uses WXT next-gen framework for quick development of browser extensions. Ideal for language learners, students, and anyone who wants quick access to word meanings without leaving their current tab.
 
+### API
+
+The api endpoint is in `background.ts` file to fetch the word data
+
 ### How to install
 
 - Clone the repo: `git clone https://github.com/skyx20/dictionary-extension.git`

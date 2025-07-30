@@ -54,22 +54,20 @@ function Search() {
     setIsLoading(true);
     const fQuery = wordToSearch.toLowerCase().trim();
     try {
-      const r = await fetch(
-        `http://127.0.0.1:8000/search/${fQuery}/${variant}`
-      );
-      if (!r.ok) {
-        console.log("this is error", r);
-        const errorMessage = await r.json();
-        setError(errorMessage.detail);
-        throw new Error(r.statusText);
+      const data = await browser.runtime.sendMessage({
+        type: "getWord",
+        message: { word: fQuery, variant: variant },
+      });
+      if (data.detail) {
+        setError(data.detail);
+        return;
       }
-      const data = await r.json();
+      // Send the data to the meanings page
       navigation(`/meanings/${wordToSearch}/${variant}`, {
         state: { wordData: data },
       });
     } catch (e) {
-      console.error(e);
-      setIsLoading(false);
+      console.log(e);
     }
   }
 

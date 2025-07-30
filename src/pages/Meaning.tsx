@@ -168,7 +168,6 @@ function Meaning() {
   "This component use a state object to get the data from the search page";
   const location = useLocation();
   const wordData = location.state?.wordData;
-  console.log(wordData);
   return (
     <article className="p-2 flex flex-col gap-2">
       {wordData && (
