@@ -106,13 +106,10 @@ function Search() {
                 border-1 w-fit p-1 border-slate-400 rounded
                 "
                 name="variants"
+                value={variant}
               >
                 {Object.keys(dictVariants).map((country) => (
-                  <option
-                    key={country}
-                    selected={variant === country ? true : undefined}
-                    value={country}
-                  >
+                  <option key={country} value={country}>
                     {dictVariants[country]}
                   </option>
                 ))}

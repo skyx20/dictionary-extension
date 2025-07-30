@@ -45,16 +45,20 @@ function Speech({
   return (
     <>
       <div className="pt-2 flex gap-2 flex-col">
-        {(Object.keys(audio_links) as Country[]).map((country, index) => (
-          <>
-            <IPA
-              key={index}
-              contry={country}
-              ipa={ipas[country]}
-              src={audio_links[country]}
-            />
-          </>
-        ))}
+        {(Object.keys(audio_links) as Country[]).map(
+          (country, index) =>
+            ipas[country] &&
+            audio_links[country] && (
+              <>
+                <IPA
+                  key={index}
+                  contry={country}
+                  ipa={ipas[country]}
+                  src={audio_links[country]}
+                />
+              </>
+            )
+        )}
       </div>
     </>
   );

@@ -8,8 +8,6 @@ type wordHeaderTypes = {
 };
 
 function WordHeader({ word, word_origin }: wordHeaderTypes) {
-  console.log("original", word_origin);
-  word_origin = "business";
   return (
     <>
       <header
